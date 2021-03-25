@@ -1,0 +1,47 @@
+William David Burton's 677 Lab2 Design Doc
+
+
+Index:
+    [CAT]   Catalogue
+        [CAT][TXT]  Catalogue text files
+        [CAT][SUM]  Catalogue function summary
+    [ORD]   Order
+    [FRO]   Front-End
+    [CLI]   Client
+    [TST]   Testing
+
+
+[CAT] The Catalogue Server
+
+
+    [CAT][SUM]
+    
+
+    [CAT][TXT]
+    
+    The Catalogue Server operates around, primarily, two .txt files: CATALOGUE.txt and ORDER_LOGXX.txt.  Both shall be stored in the '/CAT_FILES'
+    folder.
+
+    CATALOGUE.txt contains the current books for the current run, in four lines, for the four books.  It shall store the ID number, name, and
+    total amount of each book.  For example:  '2,7: RPCs for Dummies.', would indicate that for book ID 2, which is called 'RPCs for Dummiex.',
+    the catalogue holds 7 copies.
+
+    ORDER_LOGXX.txt contains the entire order log -- it starts with a summary of what books are stored within the catalogue; not full information,
+    but just the numbers.  [IE, the first line will be: '1:1 2:1 3:8 4:2' , for book id 1 and 2 each having 1 copy, book id 3 having eight copies,
+    and book id 4 having two copies]  After that, each new line will consist of orders that have been comitted, with a client id(???).  An example
+    line would be: 'CLIENT_ID_9843: 4', for the specified client purchasing a copy of book 4.  The last line will be similar to the first, just
+    with the new totals for books.
+
+    Further, the 'XX' in ORDER_LOGXX are for the run numbers.  In the event of, for example, testing, we want to be able to keep track of which run
+    had which order logs and ended with what.
+
+
+
+
+[ORD] The Order Server
+
+[FRO] The Front-End Server
+
+[CLI] The Client
+
+[TST] Testing
