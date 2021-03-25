@@ -1,4 +1,5 @@
 import os
+import shutil
 import constants
 
 # Okay, this is the main file for the funcationality of the bookstore.
@@ -30,7 +31,9 @@ def printCat(toPrint):
 
 
 ######################################################################################
-#   Catalogue
+#   Catalogue server
+
+# Makes the catalogue documents and returns the run number for further logging.
 def cat_makeDocs(runNum = -1, id_1 = 2, id_2 = 2, id_3 = 3, id_4 = 2):
     # This function creates the catalogue logs; First, it checks to see if the correct folder
     # exists.  If not, it creates it.  Then, it creates a new CATALOGUE.txt, using 'w' mode
@@ -83,12 +86,17 @@ def cat_makeDocs(runNum = -1, id_1 = 2, id_2 = 2, id_3 = 3, id_4 = 2):
     printCat("CAT_makeDocs: END")
     return runNum
 
-
+# Deletes all catalogue documents and directory
+def cat_delDocs():
+    printCat("CAT_delDocs: Deleting directory and files within")
+    # Errors are ignored as this is basically 'get a clean slate for future runs' function -- it
+    # doesn't matter if the directory existed beforehand, so long as it doesn't exist afterwards.
+    shutil.rmtree(constants.CAT_FOLDER, ignore_errors = True)
 
 
 
 ######################################################################################
-#   Order
+#   Order server
 ######################################################################################
 #   Front-end
 ######################################################################################
@@ -105,4 +113,5 @@ def cat_makeDocs(runNum = -1, id_1 = 2, id_2 = 2, id_3 = 3, id_4 = 2):
 printMain("MAIN: Start")
 printMain("MAIN: Start makeing catalogue files")
 cat_makeDocs()
+cat_delDocs()
 

@@ -6,7 +6,8 @@ Index:
         [CAT][TXT]  Catalogue text files
         [CAT][SUM]  Catalogue function summary
         [CAT][FNC]  Details of the catalogue functions
-            [CAT][FNC][makeDocs]
+            [CAT][FNC][cat_makeDocs]
+            [CAT][FNC][cat_delDocs]
     [ORD]   Order
     [FRO]   Front-End
     [CLI]   Client
@@ -42,7 +43,7 @@ Index:
 
     [CAT][FNC]
     
-        [CAT][FNC][makeDocs]
+        [CAT][FNC][cat_makeDocs]
 
         Takes in the run number -- which defaults to -1 -- as well as the number of the various books, which defaults to 2 each.
 
@@ -51,6 +52,11 @@ Index:
 
         If the run number is specified, that's the run number that's used -- it clears the relevant ORDER_LOGXX.txt and resets it.  Otherwise,
         it finds the first clear ORDER_LOGXX.txt, and creates that.  Either way, it returns the log number for future purposes.
+        
+
+        [CAT][FNC][cat_delDocs]
+
+        Deletes the CAT_FILES directory, and all folders within it.
         
 
 
