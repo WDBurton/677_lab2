@@ -27,7 +27,7 @@ Index:
     folder.
 
     CATALOGUE.txt contains the current books for the current run, in four lines, for the four books.  It shall store the ID number, name, and
-    total amount of each book.  For example:  '2,7: RPCs for Dummies.', would indicate that for book ID 2, which is called 'RPCs for Dummiex.',
+    total amount of each book.  For example:  '2,7: RPCs for Dummies', would indicate that for book ID 2, which is called 'RPCs for Dummiex',
     the catalogue holds 7 copies.
 
     ORDER_LOGXX.txt contains the entire order log -- it starts with a summary of what books are stored within the catalogue; not full information,

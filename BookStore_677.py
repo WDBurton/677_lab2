@@ -32,7 +32,6 @@ def printCat(toPrint):
 ######################################################################################
 #   Catalogue
 def cat_makeDocs(runNum = -1, id_1 = 2, id_2 = 2, id_3 = 3, id_4 = 2):
-    pass
     # This function creates the catalogue logs; First, it checks to see if the correct folder
     # exists.  If not, it creates it.  Then, it creates a new CATALOGUE.txt, using 'w' mode
     # for python file io; it fills the file and closes it.  Finally, if the run number is defined,
@@ -40,23 +39,49 @@ def cat_makeDocs(runNum = -1, id_1 = 2, id_2 = 2, id_3 = 3, id_4 = 2):
     # Otherwise, it finds the first clear run number and uses that.  Either way, it returns the run
     # number used.
 
+    printCat("CAT_makeDocs: Start")
+
     # Create the folder if it doesn't exists
+    if not os.path.exists(constants.CAT_FOLDER):
+        printCat("CAT_makeDocs: Make directory")
+        os.makedirs(constants.CAT_FOLDER)
 
     # Create CATALOGUE.txt, and fill it
+    printCat("CAT_makeDocs: Make catalogue")
+    log = open(constants.CAT_FILE_CATALOGUE, "w")
+
+    log.write("1," + str(id_1) + ": " + constants.BOOK_1 + "\n")
+    log.write("2," + str(id_2) + ": " + constants.BOOK_2 + "\n")
+    log.write("3," + str(id_3) + ": " + constants.BOOK_3 + "\n")
+    log.write("4," + str(id_4) + ": " + constants.BOOK_4 + "\n")
 
     # Close CATALOGUE.txt file
-
-    # Variable for the true run number
+    log.close()
+    printCat("CAT_makeDocs: Catalogue made")
 
     # Check to see if the run number is defined!
-
-        # If defined, store in true run number
-
-        # Otherwise, search for first free doc name, and use that for the run number
+    if runNum < 0:
+        printCat("CAT_makeDocs: Run number not defined")
+        # If not, search for first free doc name, and use that for the run number
+        curRun = 0
+        while True:
+            # Until we find an empty file name, simply increment the number we're looking for
+            if not os.path.isfile(constants.CAT_FILE_ORDER + str(curRun).zfill(2) + ".txt"):
+                break
+            curRun += 1
+        # If we're here, we've found a good file name, but we need to store the number we've found.
+        printCat("CAT_makeDocs: Run number found")
+        runNum = curRun
 
     # Now that run number is defined, make the file and put in the first line
+    printCat("CAT_makeDocs: Make order log")
+    log = open(constants.CAT_FILE_ORDER + str(runNum).zfill(2) + ".txt", "w")
+    log.write("1:" + str(id_1) + " 2:" + str(id_2) + " 3:" + str(id_3) + " 4:" + str(id_4))
 
     # Close ORDER_LOGXX.txt and return the run number.
+    log.close()
+    printCat("CAT_makeDocs: END")
+    return runNum
 
 
 
@@ -78,5 +103,6 @@ def cat_makeDocs(runNum = -1, id_1 = 2, id_2 = 2, id_3 = 3, id_4 = 2):
 
 # Basic print statements for debugging purposes.
 printMain("MAIN: Start")
-print(constants.CAT_FOLDER)
+printMain("MAIN: Start makeing catalogue files")
+cat_makeDocs()
 
