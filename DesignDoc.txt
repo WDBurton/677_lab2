@@ -5,6 +5,8 @@ Index:
     [CAT]   Catalogue
         [CAT][TXT]  Catalogue text files
         [CAT][SUM]  Catalogue function summary
+        [CAT][FNC]  Details of the catalogue functions
+            [CAT][FNC][makeDocs]
     [ORD]   Order
     [FRO]   Front-End
     [CLI]   Client
@@ -16,6 +18,8 @@ Index:
 
     [CAT][SUM]
     
+    The catalogue starts by making the correct txt files with [makeDocs].
+
 
     [CAT][TXT]
     
@@ -35,6 +39,19 @@ Index:
     Further, the 'XX' in ORDER_LOGXX are for the run numbers.  In the event of, for example, testing, we want to be able to keep track of which run
     had which order logs and ended with what.
 
+
+    [CAT][FNC]
+    
+        [CAT][FNC][makeDocs]
+
+        Takes in the run number -- which defaults to -1 -- as well as the number of the various books, which defaults to 2 each.
+
+        The catalogue makeDocs function; it creates the CATALOGUE and ORDER_LOGXX documents, as well as filling them for the program's start.
+        Simple make directory if not extant, and make or clear files as needed.
+
+        If the run number is specified, that's the run number that's used -- it clears the relevant ORDER_LOGXX.txt and resets it.  Otherwise,
+        it finds the first clear ORDER_LOGXX.txt, and creates that.  Either way, it returns the log number for future purposes.
+        
 
 
 
